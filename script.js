@@ -14,7 +14,7 @@ const c = setInterval(() => {
 
   const countDown = document.getElementById("countdown");
 
-  countDown.textContent = `${days} Days ${hours} hours ${minutes} minutes ${seconds} seconds`
+  countDown.textContent = `${days} Days ${format(hours)} hours ${format(minutes)} minutes ${format(seconds)} seconds`
 
   if (totalSeconds <= 0){
     clearInterval(c);
@@ -22,3 +22,7 @@ const c = setInterval(() => {
   }
 
 }, 1000)
+
+function format(t) {
+  return t < 10 ? `0${t}`: t;
+}
