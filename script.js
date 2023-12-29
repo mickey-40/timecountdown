@@ -1,28 +1,54 @@
-const countTo = "1 Jan 2024";
+// Time countdown
+let time = 10; // time in minutes
+let promotime = time * 60;
+
+let counting = document.getElementById("countdown");
+
+function startCountdown () {
+  let promoTimer = setInterval(() => {
+    if(promotime <= 0){
+      clearInterval(promoTimer);
+      counting.innerHTML = "Promo has ended"
+    } else {
+      promotime--;
+      const days = Math.floor(promotime / 3600 / 24);
+      const hours = Math.floor(promotime / 3600) % 24;
+      const minutes = Math.floor(promotime / 60 ) % 60;
+      const seconds = Math.floor(promotime) % 60;
 
 
-const c = setInterval(() => {
-
-  const endDate = new Date(countTo);
-  const currentDate = new Date();
-  const totalSeconds = (endDate - currentDate) / 1000;
-
-  const days = Math.floor(totalSeconds / 3600 / 24);
-  const hours = Math.floor(totalSeconds / 3600) % 24;
-  const minutes = Math.floor(totalSeconds / 60 ) % 60;
-  const seconds = Math.floor(totalSeconds) % 60;
-
-  const countDown = document.getElementById("countdown");
-
-  countDown.textContent = `${days} Days ${format(hours)} hours ${format(minutes)} minutes ${format(seconds)} seconds`
-
-  if (totalSeconds <= 0){
-    clearInterval(c);
-    countDown.textContent = "Happy New Year"
-  }
-
-}, 1000)
-
-function format(t) {
-  return t < 10 ? `0${t}`: t;
+      counting.innerHTML = `Time: ${hours} hr : ${format(minutes)} min : ${format(seconds)} sec`
+    }
+  }, 1000)
 }
+
+function format (t){
+  return t < 10 ? `0${t}` : t;
+}
+
+startCountdown();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
